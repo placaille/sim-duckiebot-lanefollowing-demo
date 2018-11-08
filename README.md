@@ -1,3 +1,7 @@
+Use scripts to launch the simulator
+
+---
+
 # sim-duckiebot-lanefollowing-demo
 
 [![Docker Hub](https://img.shields.io/docker/pulls/duckietown/duckie-ros.svg)](https://hub.docker.com/r/duckietown/duckie-ros)

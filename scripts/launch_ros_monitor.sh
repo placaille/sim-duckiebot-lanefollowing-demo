@@ -2,7 +2,6 @@ echo Please ensure the simulator is running..
 
 # init Xserver
 # open -a XQuartz
-# export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 # xhost +
 
 

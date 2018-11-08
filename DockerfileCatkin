@@ -6,8 +6,8 @@ RUN ["cross-build-start"]
 RUN /bin/bash -c "mkdir -p custom_ws/src/"
 
 # Copy or init your packages in here
-COPY dt_dependent_node custom_ws/src/dt_dependent_node
-RUN chmod +x custom_ws/src/dt_dependent_node/dt_dependent_node.py
+COPY dolores_lane_filter custom_ws/src/dolores_lane_filter
+RUN chmod +x custom_ws/src/dolores_lane_filter/dolores_lane_filter.py
 
 # Here's a copied package, slighly edited. We don't launch this, but you could easily 
 # launch this by finding `custom_line_detector`# and putting that in the 

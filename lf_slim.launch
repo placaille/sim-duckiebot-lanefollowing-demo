@@ -50,7 +50,7 @@
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
                 </include>
             </group>
-            
+
             <!-- Lane controller -->
             <group if="$(arg /lane_following/lane_controller)">
                 <remap from="lane_controller_node/lane_pose" to="lane_filter_node/lane_pose"/>
@@ -78,7 +78,8 @@
     <!-- End Lane Control -->
 
     <!-- Start Test Node -->
-    <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" /> 
+    <!-- <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" />  -->
+    <node pkg="dolores_lane_filter" name="dolores_lane_filter" type="dolores_lane_filter.py" output="screen" />
     <!-- End Test Node -->
 
     <!-- Start Copied, Custom Node -->

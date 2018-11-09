@@ -18,8 +18,8 @@
 
     <group if="$(arg lane_following)">
 
-        <!-- Line Detector -->
-        <group if="$(arg /lane_following/line_detection)">
+            <!-- Line Detector -->
+            <group if="$(arg /lane_following/line_detection)">
                 <remap from="line_detector_node/transform" to="anti_instagram_node/transform"/>
                 <remap from="line_detector_node/corrected_image/compressed" to="corrected_image/compressed"/>
                 <include file="$(find line_detector)/launch/line_detector_node.launch">
@@ -44,7 +44,7 @@
             <group if="$(arg /lane_following/lane_filter)">
                 <remap from="lane_filter_node/segment_list" to="ground_projection/lineseglist_out"/>
                 <remap from="lane_filter_node/car_cmd" to="/$(arg veh)/car_cmd"/>
-                <include file="$(find lane_filter)/launch/lane_filter_node.launch">
+                <include file="$(find dolores_lane_filter)/launch/lane_filter_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="config" value="$(arg config)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
@@ -79,11 +79,10 @@
 
     <!-- Start Test Node -->
     <!-- <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" />  -->
-    <node pkg="dolores_lane_filter" name="dolores_lane_filter" type="dolores_lane_filter.py" output="screen" />
     <!-- End Test Node -->
 
     <!-- Start Copied, Custom Node -->
-    <!-- <include file="$(find custom_line_detector)/launch/line_detector_node.launch"/> -->
+    <!-- <include file="$(find dolores_lane_filter)/launch/lane_filter_node.launch"/> -->
     <!-- End Copied, Custom Node -->
 
 </launch>

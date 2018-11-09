@@ -1,4 +1,4 @@
-Use scripts to launch the simulator
+Private repo cloned from [here](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo.git)
 
 ---
 

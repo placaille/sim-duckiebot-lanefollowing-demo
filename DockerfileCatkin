@@ -9,6 +9,7 @@ RUN /bin/bash -c "mkdir -p custom_ws/src/"
 # launch this by finding `dolores_lane_filter`# and putting that in the
 # lf_slim.launch file
 COPY dolores_lane_filter custom_ws/src/dolores_lane_filter
+RUN chmod +x custom_ws/src/dolores_lane_filter/src/lane_filter_node.py
 
 RUN /bin/bash -c "cd custom_ws/src/"
 

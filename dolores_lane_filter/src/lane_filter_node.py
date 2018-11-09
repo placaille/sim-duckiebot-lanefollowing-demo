@@ -49,8 +49,9 @@ class LaneFilterNode(object):
 
         # test publisher
         self.test_pub = rospy.Publisher('/random/test', String, queue_size=10)
-        self.test_pub.publish('This is a test')
-        rospy.loginfo('****** THIS CUSTOM SHIT IS BEING USED ******')
+        test_msg = String()
+        test_msg.data = 'This is a test'
+        self.test_pub.publish(test_msg)
 
         # FSM
         self.sub_switch = rospy.Subscriber("~switch",BoolStamped, self.cbSwitch, queue_size=1)

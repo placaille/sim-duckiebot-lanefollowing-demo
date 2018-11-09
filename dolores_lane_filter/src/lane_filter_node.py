@@ -49,7 +49,8 @@ class LaneFilterNode(object):
 
         # test publisher
         self.test_pub = rospy.Publisher('/random/test', String, queue_size=10)
-
+        self.test_pub.publish('This is a test')
+        rospy.loginfo('****** THIS CUSTOM SHIT IS BEING USED ******')
 
         # FSM
         self.sub_switch = rospy.Subscriber("~switch",BoolStamped, self.cbSwitch, queue_size=1)
@@ -169,9 +170,6 @@ class LaneFilterNode(object):
         in_lane_msg.header.stamp = segment_list_msg.header.stamp
         in_lane_msg.data = True #TODO change with in_lane
         self.pub_in_lane.publish(in_lane_msg)
-
-        # publish test
-        self.test_pub.publish('This is a test')
 
 
     def cbMode(self, msg):

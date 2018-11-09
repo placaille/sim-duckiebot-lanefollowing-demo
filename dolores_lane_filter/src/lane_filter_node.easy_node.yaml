@@ -33,6 +33,11 @@ publishers:
         type: duckietown_msgs/BoolStamped
         desc:
         queue_size: 1
+    test:
+        topic: /random/test
+        type: String
+        desc:
+        queue_size: 10
     switch:
         topic: ~switch
         type: duckietown_msgs/BoolStamped

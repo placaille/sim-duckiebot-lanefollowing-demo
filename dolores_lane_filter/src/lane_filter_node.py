@@ -31,7 +31,6 @@ class LaneFilterNode(object):
         rospy.set_param('~curvature_res', self.curvature_res) #Write to parameter server for transparancy
 
         self.pub_in_lane    = rospy.Publisher("~in_lane",BoolStamped, queue_size=1)
-        self.pub_in_lane_test    = rospy.Publisher("~in_lane_test",BoolStamped, queue_size=1)
 
         # Subscribers
         self.sub = rospy.Subscriber("~segment_list", SegmentList, self.processSegments, queue_size=1)
@@ -46,6 +45,10 @@ class LaneFilterNode(object):
 
 
         self.pub_entropy    = rospy.Publisher("~entropy",Float32, queue_size=1)
+
+
+        # test publisher
+        self.test_pub = rospy.Publisher('/random/test', String, queue_size=10)
 
 
         # FSM
@@ -166,8 +169,9 @@ class LaneFilterNode(object):
         in_lane_msg.header.stamp = segment_list_msg.header.stamp
         in_lane_msg.data = True #TODO change with in_lane
         self.pub_in_lane.publish(in_lane_msg)
-        self.pub_in_lane_test.publish(in_lane_msg)
 
+        # publish test
+        self.test_pub.publish('This is a test')
 
 
     def cbMode(self, msg):
@@ -184,29 +188,8 @@ class LaneFilterNode(object):
         rospy.loginfo('[%s] %s' % (self.node_name, s))
 
 
-def dolores_test_publisher():
-    pub = rospy.Publisher('/random/test', String, queue_size=10)
-    rate = rospy.Rate(10)
-
-    while not rospy.is_shutdown():
-        rdm = np.random.random()
-        pub.publish('random: {}'.format(rdm))
-        rate.sleep()
-
-def second_dolores_test_publisher():
-    pub = rospy.Publisher('/random/test2', String, queue_size=10)
-    rate = rospy.Rate(10)
-
-    while not rospy.is_shutdown():
-        rdm = np.random.random()
-        pub.publish('random: {}'.format(rdm))
-        rate.sleep()
-
-
 if __name__ == '__main__':
-    dolores_test_publisher()
     rospy.init_node('lane_filter', anonymous=False)
     lane_filter_node = LaneFilterNode()
     rospy.on_shutdown(lane_filter_node.onShutdown)
     rospy.spin()
-    second_dolores_test_publisher()

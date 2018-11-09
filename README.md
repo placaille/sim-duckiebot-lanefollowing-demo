@@ -16,16 +16,16 @@ To get started, fork or clone this git repository and enter the project director
 
     git clone git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.git
 
-You will also need `docker-compose`. Follow instructions [here](https://docs.docker.com/compose/install/) to install. 
+You will also need `docker-compose`. Follow instructions [here](https://docs.docker.com/compose/install/) to install.
 
 ## Usage
 
 To launch the lane following demo, run the following command:
-    
+
     docker network create gym-duckietown-net && \
     docker-compose -f docker-compose-lf.yml pull && \
     docker-compose -f docker-compose-lf.yml up
-    
+
 The first two commands don't need to be run every time, so after pulling, you may just want to run the `up` command.
 
 You will then start to see output from the Lane Following code, which can be found [here](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control)
@@ -55,7 +55,7 @@ To add your node to the pipeline, we give some simple example code. The files we
 
 `dt_dependent_node`: A simple, toy example of how to build a node that has a dependency with the current stack. You can use this as a model to build and add your own ROS nodes, making sure to edit the `CMakeLists.txt` (inside of your node, for dependencies + building things like msgs & services) and the Dockerfile to ensure your files and folders get copied into the `cudtom_ws/src` directory before you build with catkin_make.
 
-`custom_line_detector`: A *copied* node from `10-lane-control` inside of the `Software` repo, we also provide this as an example of how to copy, edit, build, and launch a node. This serves as an example, and is commented out in `lf_slim.launch`. Remember, when copying a node, you either need to make sure that (A) that copied node isn't running with the same name elsewhere (just copy it out in the launch file) and that (B) you remap the topics properly.
+`dolores_lane_filter`: A *copied* node from `10-lane-control` inside of the `Software` repo, we also provide this as an example of how to copy, edit, build, and launch a node. This serves as an example, and is commented out in `lf_slim.launch`. Remember, when copying a node, you either need to make sure that (A) that copied node isn't running with the same name elsewhere (just copy it out in the launch file) and that (B) you remap the topics properly.
 
 `lf_slim.launch`: A launch file that launches the whole lane following stack, but at the bottom has the code to launch our simple test node. It launches nodes just the way you normally might in ROS, and because our workspaces are overlayed, will be able to find code or nodes in both your new workspace, as well as the old one.
 

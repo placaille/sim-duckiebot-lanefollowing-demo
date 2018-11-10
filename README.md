@@ -2,7 +2,7 @@ Private repo cloned from [here](https://github.com/duckietown/sim-duckiebot-lane
 
 ### Custom packages
 
-The custom package must be updated and stored in `/aido-challenge-custom_cide`. The repo for the custom code can be found at [this repo](https://github.com/placaille/aido-challenge-custom_code.git).
+Custom packages must be placed in `/aido-challenge-custom_code` at the root of this repo. The repo for the custom packages for the AIDO Lane-Following Challenge can be found [here](https://github.com/placaille/aido-challenge-custom_code.git).
 
 
 ---

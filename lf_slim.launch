@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
+
     <!-- start basic args -->
     <arg name="veh" default="$(env VEHICLE_NAME)"/>
     <arg name="config" default="baseline" />
@@ -57,7 +58,7 @@
                 <remap from="lane_controller_node/wheels_cmd_executed" to="wheels_driver_node/wheels_cmd_executed" />
                 <remap from="lane_controller_node/actuator_limits" to="inverse_kinematics_node/actuator_limits" />
 
-                <include file="$(find dolores_lane_control)/launch/lane_controller_node.launch">
+                <include file="$(find lane_control)/launch/lane_controller_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="config" value="$(arg config)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
@@ -77,8 +78,11 @@
     </group>
     <!-- End Lane Control -->
 
+    <!-- Start wheel command Node -->
+    <include file="$(find dolores_wheels_command)/wheels_command_node.launch"> </include>
+    <!-- End wheel command Node -->
+
     <!-- Start Test Node -->
-    <!-- <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" />  -->
     <!-- End Test Node -->
 
     <!-- Start Copied, Custom Node -->
